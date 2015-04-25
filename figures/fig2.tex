@@ -1,0 +1,20 @@
+\documentclass[tikz,convert={density=300,size=600x300,outext=.png}]{standalone}
+\usepackage{pgfplots}
+\usepackage{cmbright}
+\newcommand{\R}{\mathbf{R}}
+\begin{document}
+\begin{tikzpicture}
+\begin{scope}
+\begin{axis}[grid=none,view/h=45,xtick={-0.5,0,0.5},ytick={-0.5,0.0,0.5}, unbounded coords=jump,colormap={mywhite}{color(0cm)=(white) color(1cm)=(gray) color(10cm)=(white)},width=7cm]
+\addplot3[surf,mesh/rows=40,mesh/ordering=rowwise, opacity=0.5] file {obstacle2D-0.table};
+\end{axis}
+\end{scope}
+\begin{scope}[xshift=6.1cm]
+\pgfplotsset{colormap={myred}{color(0cm)=(white) color(1cm)=(yellow) color(10cm)=(red)}}
+\begin{axis}[grid=none,view/h=45,xtick={-0.5,0,0.5},ytick={-0.5,0.0,0.5}, unbounded coords=jump,colormap name={myred},width=7cm]
+\addplot3[surf,mesh/rows=40,mesh/ordering=rowwise,opacity=0.5] file {obstacle2D-1.table};
+\end{axis}
+\end{scope} 
+\end{tikzpicture}
+%The obstacle $g(x,y) = \max(\sin(\sqrt{16 x^2+ 16 y^2}) - 1/2,0)$ (on left) and the solution of $\Delta v = 0$ on $B_1 \subset \R^2$ with $v=0$ on $\partial B_1$ and $g \le v$ (on right).
+\end{document}

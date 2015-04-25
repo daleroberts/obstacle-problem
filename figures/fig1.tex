@@ -1,0 +1,12 @@
+\documentclass[tikz,convert={density=300,size=300x300,outext=.png}]{standalone}
+\usepackage{cmbright}
+\usepackage{pgfplots}
+\begin{document}
+\begin{tikzpicture}[scale=3]
+\draw[->] (-1.2,0) -- (1.4,0) node[right] {$x$}; 
+\draw[->] (0,-0.2) -- (0,1.2);
+\draw plot[smooth,domain=-1:1] file {obstacle1d-0.table} node[right] {$g(x)$};
+\draw[very thick,color=red] plot[smooth,domain=-1:1] file {obstacle1d-1.table} node[above right] {$v(x)$};
+\end{tikzpicture}
+%Solution of $- v''(x) = 0$ with $v(-1) = v(1) = 0$ with the obstacle $v \ge g$ where $g(x) = (1-4 x^2)(x^2-1/2)+1$.
+\end{document}
